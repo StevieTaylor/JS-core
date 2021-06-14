@@ -1,0 +1,42 @@
+{
+  "name": "js-core",
+  "version": "1.0.0",
+  "description": "javascript core principle",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevieTaylor/JS-core.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Stevie Taylor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StevieTaylor/JS-core/issues"
+  },
+  "homepage": "https://github.com/StevieTaylor/JS-core#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.2.6",
+    "happypack": "^5.0.1",
+    "html-webpack-plugin": "^4.5.2",
+    "mini-css-extract-plugin": "^1.6.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "webpack-merge": "^5.8.0",
+    "webpack-parallel-uglify-plugin": "^2.0.0"
+  }
+}
