@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-06-14 22:20:58
- * @LastEditTime: 2021-06-15 17:00:44
+ * @LastEditTime: 2021-06-15 17:40:33
  * @LastEditors: Stevie
  * @Description: 主入口文件
  */
@@ -52,12 +52,12 @@ const loadModule = (map = {}, chapterId = '') => {
       linkNode.addEventListener('click', () => {
         import(`./chapter/${chapterId}/${key}`)
           .then((res) => {
-            console.log(`%cModule ${key} load successfully`, 'color:#28DF99');
+            console.log(`%cModule [${key}] load successfully...`, 'color:#28DF99');
           })
           .catch((err) => {
             // console.error(err);
             if (err) {
-              console.error(`%cModule ${key} load failed`, 'color:#E8505B');
+              console.error(`%cModule [${key}] load failed...`, 'color:#E8505B');
               return;
             }
           });
