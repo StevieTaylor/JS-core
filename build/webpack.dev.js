@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-06-14 23:10:50
- * @LastEditTime: 2021-06-14 23:46:25
+ * @LastEditTime: 2021-06-15 10:13:26
  * @LastEditors: Stevie
  * @Description: 
  */
@@ -15,7 +15,7 @@ const devConfig = {
   devServer:{
     contentBase: path.resolve(__dirname,'../dist'),
     port: 6140,
-    host: '192.168.1.4',
+    host: 'localhost',
     compress:false,
     open: true
   },
