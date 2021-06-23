@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-06-15 15:11:56
- * @LastEditTime: 2021-06-15 17:01:27
+ * @LastEditTime: 2021-06-23 15:58:09
  * @LastEditors: Stevie
  * @Description: 章节配置、模块配置
  */
@@ -12,7 +12,7 @@ export const chapterMap = {
   },
   array: {
     name: '二、深入数组篇',
-    display: false,
+    display: true,
   },
   async: {
     name: '三、异步编程篇',
@@ -29,3 +29,7 @@ export const baseMap = {
   dataCopy: '深浅拷贝',
   inherit: '继承',
 };
+
+export const arrayMap = {
+  arrayTraversal: '数组遍历',
+}
