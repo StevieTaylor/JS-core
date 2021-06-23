@@ -1,0 +1,44 @@
+a {
+  color: #1890ff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+  touch-action: manipulation;
+}
+
+a:link {
+  color: inherit;
+}
+
+a:active,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+
+a:hover {
+  color: #40a9ff;
+}
+
+a:active {
+  color: #096dd9;
+}
+
+a:focus {
+  text-decoration: none;
+  outline: 0;
+}
+
+.module {
+  position: relative;
+  display: block;
+  margin-bottom: 6px;
+  overflow: hidden;
+  color: #000000d9;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: all 0.3s;
+}
