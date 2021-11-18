@@ -1,13 +1,13 @@
 /*
  * @Author: Stevie
  * @Date: 2021-06-14 22:20:58
- * @LastEditTime: 2021-06-23 16:15:47
+ * @LastEditTime: 2021-11-17 15:22:47
  * @LastEditors: Stevie
  * @Description: 主入口文件
  */
 import './styles/index.css'
-import { chapterMap, baseMap, arrayMap } from './utils/constant'
-import './chapter/array/array-traversal'
+import { chapterMap, baseMap, arrayMap, regExp } from './utils/constant'
+import './chapter/regExp/position-matching'
 
 const rootNode = document.getElementById('root')
 const titleNode = document.createElement('h1')
@@ -57,10 +57,15 @@ function loadModule(map = {}, chapterId = '') {
         const moduleName = key.replace(/([A-Z])/g, '-$1').toLowerCase()
         import(`./chapter/${chapterId}/${moduleName}`)
           .then((res) => {
-            res && console.log(`%cModule [${moduleName}] load successfully...`, 'color:#28DF99')
+            res &&
+              console.log(
+                `%cModule [${moduleName}] load successfully...`,
+                'color:#28DF99'
+              )
           })
           .catch((err) => {
-            err && console.error(`%cModule [${moduleName}] load failed...`, 'color:#E8505B')
+            err &&
+              console.error(`%cModule [${moduleName}] load failed...`, 'color:#E8505B')
           })
       })
       liNode.appendChild(anchorNode)
@@ -71,3 +76,4 @@ function loadModule(map = {}, chapterId = '') {
 loadChapter(chapterMap)
 loadModule(baseMap, 'base')
 loadModule(arrayMap, 'array')
+loadModule(regExp, 'regExp')
