@@ -1,13 +1,12 @@
 /*
  * @Author: Stevie
  * @Date: 2021-06-14 22:20:58
- * @LastEditTime: 2021-11-17 15:22:47
+ * @LastEditTime: 2021-12-12 18:59:28
  * @LastEditors: Stevie
  * @Description: 主入口文件
  */
 import './styles/index.css'
-import { chapterMap, baseMap, arrayMap, regExp } from './utils/constant'
-import './chapter/regExp/position-matching'
+import { chapterConfigs } from './constants/index'
 
 const rootNode = document.getElementById('root')
 const titleNode = document.createElement('h1')
@@ -18,43 +17,68 @@ rootNode.appendChild(titleNode)
 
 /**
  * @description: 加载章节
- * @param {*} map
+ * @param {*} chapters
  * @return {*}
  */
-function loadChapter(map = {}) {
-  for (const key in map) {
-    if (Object.hasOwnProperty.call(map, key) && map[key].display) {
-      const container = document.createElement('div')
-      container.className = key
-      const subtitleNode = document.createElement('h2')
-      subtitleNode.innerHTML = map[key].name
-      container.appendChild(subtitleNode)
-      const ulistNode = document.createElement('ul')
-      ulistNode.id = key
-      container.appendChild(ulistNode)
-      rootNode.appendChild(container)
+function loadChapter(chapters = []) {
+  const length = chapters.length
+
+  if (length <= 0) {
+    return
+  }
+
+  for (let i = 0; i < length; i++) {
+    const { chapterId, chapterName, display, children } = chapters[i]
+
+    if (display) {
+      const section = document.createElement('div')
+      section.className = `${chapterId}-container`
+
+      const subtitle = document.createElement('h2')
+      subtitle.innerHTML = chapterName
+
+      const moduleList = document.createElement('ul')
+      moduleList.id = `${chapterId}-modules`
+
+      section.append(subtitle, moduleList)
+      rootNode.appendChild(section)
+
+      loadModule(chapterId, children)
     }
   }
 }
 
 /**
  * @description: 加载模块
- * @param {*} map
  * @param {*} chapterId
+ * @param {*} modules
  * @return {*}
  */
-function loadModule(map = {}, chapterId = '') {
-  const chapterNode = document.getElementById(`${chapterId}`)
-  for (const key in map) {
-    if (Object.hasOwnProperty.call(map, key)) {
-      const liNode = document.createElement('li')
-      const anchorNode = document.createElement('a')
-      anchorNode.innerHTML = map[key]
-      anchorNode.href = `#${key}`
-      anchorNode.rel = 'noopener'
-      anchorNode.className = 'module'
-      anchorNode.addEventListener('click', () => {
-        const moduleName = key.replace(/([A-Z])/g, '-$1').toLowerCase()
+function loadModule(chapterId = '', modules = []) {
+  const moduleList = document.getElementById(`${chapterId}-modules`)
+  const sections = modules.sort((a, b) => a.sectionOrder - b.sectionOrder)
+  const length = sections.length
+
+  if (length <= 0) {
+    const todo = document.createElement('p')
+    todo.innerHTML = '正在建设中...'
+    moduleList.appendChild(todo)
+    return
+  }
+
+  for (let i = 0; i < length; i++) {
+    const { sectionId, sectionName, display } = sections[i]
+
+    if (display) {
+      const module = document.createElement('li')
+
+      const moduleLink = document.createElement('a')
+      moduleLink.innerHTML = sectionName
+      moduleLink.href = `#${sectionId}`
+      moduleLink.rel = 'noopener'
+      moduleLink.className = 'module'
+      moduleLink.addEventListener('click', () => {
+        const moduleName = sectionId.replace(/([A-Z])/g, '-$1').toLowerCase()
         import(`./chapter/${chapterId}/${moduleName}`)
           .then((res) => {
             res &&
@@ -68,12 +92,11 @@ function loadModule(map = {}, chapterId = '') {
               console.error(`%cModule [${moduleName}] load failed...`, 'color:#E8505B')
           })
       })
-      liNode.appendChild(anchorNode)
-      chapterNode.appendChild(liNode)
+
+      module.appendChild(moduleLink)
+      moduleList.appendChild(module)
     }
   }
 }
-loadChapter(chapterMap)
-loadModule(baseMap, 'base')
-loadModule(arrayMap, 'array')
-loadModule(regExp, 'regExp')
+
+loadChapter(chapterConfigs)
