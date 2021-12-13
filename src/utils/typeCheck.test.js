@@ -1,11 +1,10 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-13 10:39:54
- * @LastEditTime: 2021-12-13 13:36:12
+ * @LastEditTime: 2021-12-13 15:53:37
  * @LastEditors: Stevie
  * @Description:
  */
-
 import { CheckType } from './typeCheck'
 
 // 以下是13种待检测数据：
@@ -23,7 +22,7 @@ const reg = /a/g // [object RegExp]
 const math = Math // [object Math]
 const func = function a() {} // [object Function]
 
-const checkArray = [
+const testArray = [
   number,
   string,
   boolean,
@@ -39,7 +38,7 @@ const checkArray = [
   func,
 ]
 
-const types = [
+const expectedTypes = [
   'Number',
   'String',
   'Boolean',
@@ -55,8 +54,8 @@ const types = [
   'Function',
 ]
 
-checkArray.forEach((item) => {
-  types.forEach((type) => {
-    return CheckType[`is${type}`](item) ? console.log(`${type}类型:`, item) : null
+for (let i = 0; i < testArray.length; i++) {
+  test('check type ', () => {
+    expect(CheckType.getType(testArray[i])).toBe(expectedTypes[i])
   })
-})
+}
