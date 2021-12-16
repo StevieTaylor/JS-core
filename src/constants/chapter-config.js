@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-11-19 15:28:15
- * @LastEditTime: 2021-12-16 14:05:49
+ * @LastEditTime: 2021-12-16 17:22:16
  * @LastEditors: Stevie
  * @Description:
  */
@@ -46,6 +46,12 @@ export const chapterConfigs = [
         sectionOrder: 2,
         sectionId: 'removeDuplicate',
         sectionName: '数组去重',
+        display: true,
+      },
+      {
+        sectionOrder: 3,
+        sectionId: 'flatten',
+        sectionName: '数组扁平化',
         display: true,
       },
     ],
