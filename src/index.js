@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-06-14 22:20:58
- * @LastEditTime: 2021-12-16 16:51:09
+ * @LastEditTime: 2021-12-16 21:30:35
  * @LastEditors: Stevie
  * @Description: 主入口文件
  */
@@ -10,7 +10,7 @@ import { chapterConfigs } from './constants/index'
 
 const rootNode = document.getElementById('root')
 const titleNode = document.createElement('h1')
-titleNode.innerHTML = 'JS-core 核心原理'
+titleNode.innerHTML = 'Javascript 核心原理'
 titleNode.style.borderBottom = '1px solid #BBBFCA'
 titleNode.style.paddingBottom = '10px'
 rootNode.appendChild(titleNode)
