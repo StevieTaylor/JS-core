@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-11-19 15:28:15
- * @LastEditTime: 2021-12-12 18:59:59
+ * @LastEditTime: 2021-12-16 14:05:49
  * @LastEditors: Stevie
  * @Description:
  */
@@ -38,8 +38,14 @@ export const chapterConfigs = [
     children: [
       {
         sectionOrder: 1,
-        sectionId: 'arrayTraversal',
+        sectionId: 'traversal',
         sectionName: '数组遍历',
+        display: true,
+      },
+      {
+        sectionOrder: 2,
+        sectionId: 'removeDuplicate',
+        sectionName: '数组去重',
         display: true,
       },
     ],
