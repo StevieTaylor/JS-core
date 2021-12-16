@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-16 16:52:46
- * @LastEditTime: 2021-12-16 18:25:42
+ * @LastEditTime: 2021-12-16 18:36:40
  * @LastEditors: Stevie
  * @Description:
  */
@@ -30,7 +30,6 @@ function flattenArray1(array = []) {
 function flattenArray2(array = []) {
   while (array.some((item) => Array.isArray(item))) {
     array = [].concat(...array)
-    debugger
   }
   return array
 }
