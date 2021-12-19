@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-13 10:39:45
- * @LastEditTime: 2021-12-13 13:34:33
+ * @LastEditTime: 2021-12-19 17:50:10
  * @LastEditors: Stevie
  * @Description:
  */
@@ -32,6 +32,10 @@ class CheckType {
 
   isSymbol(obj) {
     return this.getType(obj) === 'Symbol'
+  }
+
+  isBigInt(obj) {
+    return this.getType(obj) === 'BigInt'
   }
 
   isObject(obj) {
