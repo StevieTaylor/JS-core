@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-19 17:03:07
- * @LastEditTime: 2022-10-09 18:30:48
+ * @LastEditTime: 2022-10-09 18:33:48
  * @LastEditors: Stevie
  * @Description: 数据类型和变量
  */
@@ -429,6 +429,7 @@ function transferReferenceToPrimitive(obj) {
   if (CheckType.isPrimitive(obj?.toString())) {
     return obj?.toString()
   }
+  // - 如果都没有返回原始类型，则会报错
   throw new Error('can not transfer to primitive type')
 }
 
