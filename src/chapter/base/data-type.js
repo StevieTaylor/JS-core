@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-19 17:03:07
- * @LastEditTime: 2022-10-09 18:33:48
+ * @LastEditTime: 2022-10-09 22:24:33
  * @LastEditors: Stevie
  * @Description: 数据类型和变量
  */
@@ -462,9 +462,20 @@ const object2 = {
 console.log('object2 :>> ', transferReferenceToPrimitive(object2))
 console.log('object2 + 1 :>> ', object2 + 1)
 
+// * question1: [] == ![] 的结果是什么
 // - step1: ![] -> false, 变为 [] == false
 // - step2: false -> 0, 变为 [] == 0
 // - step3: [] -> '', 变为 '' == 0
 // - step4: '' -> 0, 变为 0 == 0
 // - step5: 结果为true
 console.log('[] == ![] :>> ', [] == ![])
+
+// * question2：怎样使 a == 1 && a == 2 && a == 3 为 true
+const a = {
+  value: 0,
+  valueOf() {
+    this.value++
+    return this.value
+  },
+}
+console.log('a == 1 && a == 2 && a == 3 :>> ', a == 1 && a == 2 && a == 3)
