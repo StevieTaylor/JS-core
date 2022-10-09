@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-13 10:39:54
- * @LastEditTime: 2021-12-19 17:53:47
+ * @LastEditTime: 2022-10-09 17:28:24
  * @LastEditors: Stevie
  * @Description:
  */
@@ -60,5 +60,21 @@ const expectedTypes = [
 test('check data type', () => {
   for (let i = 0; i < testArray.length; i++) {
     expect(CheckType.getType(testArray[i])).toBe(expectedTypes[i])
+  }
+})
+
+const primitiveTypes = [number, string, boolean, undefine, nul, symbol, bigInt]
+
+test('check data is primitive type or not', () => {
+  for (let i = 0; i < primitiveTypes.length; i++) {
+    expect(CheckType.isPrimitive(primitiveTypes[i])).toEqual(true)
+  }
+})
+
+const referenceTypes = [object, array, date, error, reg, math, func]
+
+test('check data is reference type or not', () => {
+  for (let i = 0; i < referenceTypes.length; i++) {
+    expect(CheckType.isReference(referenceTypes[i])).toEqual(true)
   }
 })

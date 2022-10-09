@@ -1,7 +1,7 @@
 /*
  * @Author: Stevie
  * @Date: 2021-12-13 10:39:45
- * @LastEditTime: 2021-12-19 17:50:10
+ * @LastEditTime: 2022-10-09 17:26:54
  * @LastEditors: Stevie
  * @Description:
  */
@@ -64,6 +64,18 @@ class CheckType {
 
   isFunction(obj) {
     return this.getType(obj) === 'Function'
+  }
+
+  isPrimitive(obj) {
+    return ['Number', 'String', 'Boolean', 'Undefined', 'Null', 'Symbol', 'BigInt'].includes(
+      this.getType(obj)
+    )
+  }
+
+  isReference(obj) {
+    return ['Object', 'Array', 'Date', 'Error', 'Math', 'RegExp', 'Function'].includes(
+      this.getType(obj)
+    )
   }
 }
 
