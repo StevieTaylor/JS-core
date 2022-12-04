@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History API</title>
+    <style>
+      #history-apis > div {
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="history-apis">
+      <div>
+        <button onclick="back()">back</button>
+        <span>跳转到浏览器会话历史的上一页</span>
+      </div>
+
+      <div>
+        <button onclick="forward()">forward</button>
+        <span>跳转到浏览器会话历史的下一页</span>
+      </div>
+
+      <div>
+        <button>go</button>
+        <span>跳转到浏览器会话历史指定的某一页</span>
+      </div>
+
+      <div>
+        <button onclick="goBack()">go(-1)</button>
+        <span>-1为上一页</span>
+      </div>
+
+      <div>
+        <button onclick="goForward()">go(1)</button>
+        <span>1为下一页</span>
+      </div>
+
+      <div>
+        <button onclick="goRefresh()">go() 或 go(0)</button>
+        <span>重新加载本页面</span>
+      </div>
+
+      <div>
+        <button onclick="goUrl()">go(url)</button>
+        <span>跳转到指定URL页面</span>
+      </div>
+
+      <div>
+        <button onclick="pushState()">pushState</button>
+        <span>将给定的数据压入到浏览器会话历史栈中</span>
+      </div>
+
+      <div>
+        <button onclick="replaceState()">replaceState</button>
+        <span>将当前的会话页面的url替换成指定的数据</span>
+      </div>
+    </div>
+
+    <script>
+      function back() {
+        window.history.back()
+      }
+
+      function forward() {
+        window.history.forward()
+      }
+
+      function goBack() {
+        window.history.go(-1)
+      }
+
+      function goForward() {
+        window.history.go(1)
+      }
+
+      function goRefresh() {
+        window.history.go(0)
+      }
+
+      function goUrl() {
+        console.log('history :>> ', history)
+      }
+    </script>
+  </body>
+</html>

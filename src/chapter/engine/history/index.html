@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Router</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #content {
+            height: calc(100vh - 50px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+        }
+
+        #nav {
+            height: 50px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+        }
+
+        #nav button {
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+        }
+
+        #nav button:not(:last-of-type) {
+            border-right: none;
+        }
+
+        #nav button:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="content"></main>
+    <nav id="nav">
+        <button id="home">首页</button>
+        <button id="classify">分类</button>
+        <button id="shopping-cart">购物车</button>
+        <button id="mine">我的</button>
+    </nav>
+    <script src="./index.js"></script>
+    <script>
+        const button1 = document.getElementById('home')
+        const button2 = document.getElementById('classify')
+        const button3 = document.getElementById('shopping-cart')
+        const button4 = document.getElementById('mine')
+
+        button1.addEventListener('click', function () {
+            window.history.pushState({ component: '<div>主页内容</div>' }, null, './home')
+        })
+
+        button2.addEventListener('click', function () {
+            window.history.pushState({ component: '<div>分类内容</div>' }, null, './classify')
+        })
+
+        button3.addEventListener('click', function () {
+            window.history.pushState({ component: '<div>购物车内容</div>' }, null, './shopping-cart')
+        })
+
+        button4.addEventListener('click', function () {
+            window.history.pushState({ component: '<div>我的内容</div>' }, null, './mine')
+        })
+
+        window.addEventListener('pushState', (e) => {
+            const data = e.arguments[0];
+            document.querySelector('#content').innerHTML = data.component;
+        })
+    </script>
+</body>
+
+</html>
